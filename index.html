@@ -138,6 +138,34 @@
       display: inline-block;
     }
 
+    /* ============ ANIMATIONS ============ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 4px 6px -2px rgba(13,148,136,0.2); }
+      50% { box-shadow: 0 0 0 14px rgba(13,148,136,0.08); }
+      100% { box-shadow: 0 4px 6px -2px rgba(13,148,136,0.2); }
+    }
+    .cta-pulse {
+      animation: pulse 2.2s infinite;
+    }
+
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-content > div {
+      animation: heroFadeUp 0.9s ease both;
+    }
+
     /* ============ 1. DUAL STICKY MOBILE CTA ============ */
     .sticky-mobile-cta {
       display: none;
@@ -317,10 +345,9 @@
     .hero-content { position: relative; z-index: 2; width: 100%; padding: 90px 0; }
     .hero h1 { font-size: clamp(2.3rem, 7vw, 4rem); line-height: 1.15; }
     .hero-actions {
-      display: flex; gap: 20px; flex-wrap: wrap; margin-top: 32px; align-items: center;
+      display: flex; gap: 20px; flex-wrap: wrap; align-items: center;
     }
     .hero-proof {
-      margin-top: 44px;
       display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
     }
     .stars { color: #F59E0B; letter-spacing: 4px; }
@@ -541,77 +568,6 @@
     }
     .faq-item.active .faq-answer { padding: 16px 24px 18px; max-height: 400px; }
 
-    /* ============ 14. FOOTER ============ */
-    .site-footer { background: var(--neutral-100); padding: 64px 24px 24px; }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 40px;
-    }
-    .footer-brand {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.9rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-    }
-    .footer-brand span { color: var(--primary); }
-    .site-footer h4 { font-size: 1rem; font-family: 'Inter', sans-serif; font-weight: 700; }
-    .footer-links { list-style: none; margin-top: 16px; }
-    .footer-links li { margin-bottom: 10px; }
-    .footer-links a {
-      color: var(--neutral-500);
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--primary); }
-    .social-row { display: flex; gap: 14px; margin-top: 18px; }
-    .social-row a {
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      background: #fff;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--primary-dark);
-      text-decoration: none;
-      box-shadow: var(--shadow-card);
-      transition: transform 0.2s, color 0.2s;
-    }
-    .social-row a:hover { transform: translateY(-3px); color: var(--primary); }
-    .newsletter-form { display: flex; margin-top: 16px; }
-    .newsletter-form input {
-      flex: 1; min-width: 0;
-      padding: 12px 18px;
-      border-radius: 60px 0 0 60px;
-      border: 1px solid #E5E7EB;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      outline: none;
-    }
-    .newsletter-form button {
-      background: var(--primary);
-      border: none;
-      color: #fff;
-      padding: 0 22px;
-      border-radius: 0 60px 60px 0;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background 0.2s;
-    }
-    .newsletter-form button:hover { background: #0F766E; }
-    .footer-bottom {
-      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
-      color: var(--neutral-500); font-size: 0.88rem;
-    }
-    .footer-bottom a { color: var(--neutral-500); text-decoration: none; }
-    .footer-bottom a:hover { color: var(--primary); }
-    .credit {
-      text-align: center;
-      margin-top: 22px;
-      font-size: 0.82rem;
-      color: var(--neutral-500);
-    }
-    .credit strong { color: var(--primary-dark); }
-
     /* ============ 15. MODAL ============ */
     .modal-overlay {
       display: none;
@@ -668,6 +624,12 @@
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
+
+    /* Utility for CTA blocks */
+    .cta-block {
+      text-align: center;
+      margin-top: 48px;
+    }
   </style>
 </head>
 <body>
@@ -695,8 +657,8 @@
   <a href="#services" onclick="toggleMenu()">Services</a>
   <a href="#contact" onclick="toggleMenu()">Contact</a>
   <button class="btn-primary open-booking-modal" style="margin-top:24px; width:100%;">Book Free Session</button>
-  <a href="tel:+917780814739" style="border:none; margin-top:8px; color:var(--call); font-weight:700;">
-    <i class="fas fa-phone-alt"></i> +91 77808 14739
+  <a href="tel:+917780814739" style="border:none; margin-top:8px; color:var(--call); font-weight:700; display:flex; align-items:center; gap:8px;">
+    <i class="fas fa-phone-alt"></i> Call Now
   </a>
 </div>
 
@@ -735,15 +697,15 @@
     <div style="max-width: 720px;">
       <h1>Move Better. Feel Stronger. Live Calmer.</h1>
 
-      <div class="hero-actions">
-        <button class="btn-primary open-booking-modal" style="font-size:1.1rem; padding:16px 38px; border:none;">
-          Claim Your Free Session <i class="fas fa-arrow-right"></i>
-        </button>
-      </div>
-
-      <div class="hero-proof">
+      <div class="hero-proof" style="margin-top:24px;">
         <span class="stars">★★★★★</span>
         <span style="font-weight:600;">Loved by 2,000+ students across Jammu</span>
+      </div>
+
+      <div class="hero-actions" style="margin-top:32px;">
+        <button class="btn-primary open-booking-modal cta-pulse" style="font-size:1.1rem; padding:16px 38px; border:none;">
+          Claim Your Free Session <i class="fas fa-arrow-right"></i>
+        </button>
       </div>
     </div>
   </div>
@@ -785,6 +747,12 @@
         <h3>Real Results</h3>
         <p>Less stress, better sleep, improved flexibility and a stronger body.</p>
       </div>
+    </div>
+
+    <div class="cta-block">
+      <button class="btn-primary open-booking-modal cta-pulse" style="font-size:1.05rem; padding:14px 34px; border:none;">
+        Claim Your Free Session <i class="fas fa-arrow-right"></i>
+      </button>
     </div>
   </div>
 </section>
@@ -836,6 +804,12 @@
         <a href="#contact" class="text-link" style="margin-top:12px; display:inline-block;">View Schedule →</a>
       </div>
     </div>
+
+    <div class="cta-block">
+      <button class="btn-primary open-booking-modal cta-pulse" style="font-size:1.05rem; padding:14px 34px; border:none;">
+        Claim Your Free Session <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
   </div>
 </section>
 
@@ -868,6 +842,12 @@
         <div class="testimonial-meta"><strong>Anjali Desai</strong> · Jammu</div>
       </div>
     </div>
+
+    <div class="cta-block">
+      <button class="btn-primary open-booking-modal cta-pulse" style="font-size:1.05rem; padding:14px 34px; border:none;">
+        Claim Your Free Session <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
   </div>
 </section>
 
@@ -878,7 +858,8 @@
   <div class="container">
     <div class="founder-grid">
       <div>
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"
+        <!-- Replace 'founder.jpg' with your actual image path or URL -->
+        <img src="founder.jpg"
              alt="Dr Neeraj Gupta, founder of Health Hub" class="founder-photo" loading="lazy">
       </div>
 
@@ -911,6 +892,12 @@
         </div>
       </div>
     </div>
+
+    <div class="cta-block">
+      <button class="btn-primary open-booking-modal cta-pulse" style="font-size:1.05rem; padding:14px 34px; border:none;">
+        Claim Your Free Session <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
   </div>
 </section>
 
@@ -929,7 +916,7 @@
     <form class="offer-form" id="offerForm" onsubmit="return sendOfferToWhatsApp(event);">
       <input type="text" id="offerName" placeholder="Your name" required autocomplete="name">
       <input type="tel" id="offerWhatsapp" placeholder="WhatsApp number" required autocomplete="tel">
-      <button type="submit" class="btn-offer">
+      <button type="submit" class="btn-offer cta-pulse">
         <i class="fab fa-whatsapp" style="font-size:1.3rem;"></i> Claim My Free Session
       </button>
     </form>
@@ -967,8 +954,8 @@
         </div>
         <div>
           <h3>Call Us</h3>
-          <p><a href="tel:+917780814739">+91 77808 14739</a></p>
-          <p style="font-size:0.85rem;">Mon–Sat · 6:00 AM – 8:00 PM</p>
+          <a href="tel:+917780814739" class="btn-outline" style="margin-top:8px; display:inline-block; padding:8px 22px; font-size:0.9rem;">Call Now</a>
+          <p style="font-size:0.85rem; margin-top:8px;">Mon–Sat · 11:00 AM – 6:00 PM</p>
         </div>
       </div>
 
@@ -979,11 +966,11 @@
         </div>
         <div>
           <h3>WhatsApp Us</h3>
-          <p>
-            <a href="https://wa.me/917780814739?text=Hi%20Health%20Hub%2C%20I%27d%20like%20to%20know%20more%20about%20your%20classes."
-               target="_blank" rel="noopener">+91 77808 14739</a>
-          </p>
-          <p style="font-size:0.85rem;">Fastest response — usually within minutes.</p>
+          <a href="https://wa.me/917780814739?text=Hi%20Health%20Hub%2C%20I%27d%20like%20to%20know%20more%20about%20your%20classes."
+             target="_blank" rel="noopener" class="btn-outline" style="margin-top:8px; display:inline-block; padding:8px 22px; font-size:0.9rem;">
+            Chat on WhatsApp
+          </a>
+          <p style="font-size:0.85rem; margin-top:8px;">Fastest response — usually within minutes.</p>
         </div>
       </div>
     </div>
@@ -1069,98 +1056,14 @@
         </div>
       </div>
     </div>
+
+    <div class="cta-block">
+      <button class="btn-primary open-booking-modal cta-pulse" style="font-size:1.05rem; padding:14px 34px; border:none;">
+        Claim Your Free Session <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
   </div>
 </section>
-
-<!-- ============================================================
-     14. FOOTER
-     ============================================================ -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-
-      <!-- Brand summary -->
-      <div>
-        <div class="footer-brand">Health<span>Hub</span></div>
-        <p style="margin:16px 0; color:var(--neutral-500); font-size:0.95rem;">
-          Accessible, transformative yoga &amp; wellness for real life — right here in Jammu.
-        </p>
-        <div class="social-row">
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://wa.me/917780814739" target="_blank" rel="noopener" aria-label="WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Quick links -->
-      <div>
-        <h4>Explore</h4>
-        <ul class="footer-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-
-      <!-- Classes -->
-      <div>
-        <h4>Classes</h4>
-        <ul class="footer-links">
-          <li><a href="#services">Schedule</a></li>
-          <li><a href="#services">Online Studio</a></li>
-          <li><a href="#services">Workshops</a></li>
-          <li><a href="#services">Private Sessions</a></li>
-        </ul>
-      </div>
-
-      <!-- Contact info -->
-      <div>
-        <h4>Contact</h4>
-        <ul class="footer-links">
-          <li>
-            <a href="tel:+917780814739"><i class="fas fa-phone-alt" style="width:16px;"></i> +91 77808 14739</a>
-          </li>
-          <li>
-            <a href="https://wa.me/917780814739" target="_blank" rel="noopener">
-              <i class="fab fa-whatsapp" style="width:16px;"></i> WhatsApp
-            </a>
-          </li>
-          <li style="color:var(--neutral-500); font-size:0.95rem; line-height:1.6;">
-            <i class="fas fa-map-marker-alt" style="width:16px;"></i>
-            1st Floor, 200 A/D, Left Lane of Panch Mandir, Gandhi Nagar, Jammu, J&amp;K 180004
-          </li>
-        </ul>
-      </div>
-
-      <!-- Newsletter -->
-      <div>
-        <h4>Newsletter</h4>
-        <p style="margin-top:16px; color:var(--neutral-500); font-size:0.9rem;">
-          Tips, schedules &amp; offers. No spam.
-        </p>
-        <form class="newsletter-form" onsubmit="event.preventDefault(); this.reset(); alert('Thanks for subscribing!');">
-          <input type="email" placeholder="Your email" required aria-label="Email address">
-          <button type="submit" aria-label="Subscribe">→</button>
-        </form>
-      </div>
-    </div>
-
-    <hr style="margin:48px 0 24px; border:none; border-top:1px solid rgba(0,0,0,0.06);">
-
-    <div class="footer-bottom">
-      <span>© 2025 Health Hub, Jammu. All rights reserved.</span>
-      <span><a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a></span>
-    </div>
-
-    <div class="credit">
-      Designed by <strong>Site Studio Jammu</strong>
-    </div>
-  </div>
-</footer>
 
 <!-- ============================================================
      15. CONTACT / BOOKING MODAL POPUP
@@ -1292,6 +1195,25 @@
       document.getElementById('mobileMenu').style.display = 'none';
       document.body.style.overflow = '';
     });
+  });
+
+  /* ---------- Scroll reveal animation ---------- */
+  document.addEventListener('DOMContentLoaded', function () {
+    // Add reveal class to key elements
+    document.querySelectorAll('section > .container, .card, .founder-grid, .offer-inner, .trust-inner, .map-container').forEach(el => {
+      el.classList.add('reveal');
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   });
 </script>
 

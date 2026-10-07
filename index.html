@@ -316,42 +316,14 @@
     }
     .hero-content { position: relative; z-index: 2; width: 100%; padding: 90px 0; }
     .hero h1 { font-size: clamp(2.3rem, 7vw, 4rem); line-height: 1.15; }
-    .hero p.sub {
-      font-size: clamp(1.05rem, 2.5vw, 1.4rem);
-      margin: 24px 0 0;
-      opacity: 0.92;
-      max-width: 620px;
-    }
     .hero-actions {
       display: flex; gap: 20px; flex-wrap: wrap; margin-top: 32px; align-items: center;
     }
-    .hero-actions .ghost-link {
-      color: #fff;
-      font-weight: 500;
-      text-decoration: underline;
-      text-underline-offset: 8px;
-    }
-    .hero-actions .ghost-link:hover { opacity: 0.8; }
     .hero-proof {
       margin-top: 44px;
       display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
     }
     .stars { color: #F59E0B; letter-spacing: 4px; }
-
-    /* ============ 4. TRUST BAR ============ */
-    .trust-bar { background: var(--white); padding: 26px 0; border-bottom: 1px solid var(--neutral-100); }
-    .trust-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 24px;
-    }
-    .trust-label { font-weight: 600; color: var(--neutral-500); font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; }
-    .trust-logos {
-      display: flex; gap: 40px; flex-wrap: wrap;
-      filter: grayscale(1); opacity: 0.65;
-      font-weight: 700; color: var(--neutral-900); font-size: 0.95rem;
-      letter-spacing: 0.05em;
-    }
-    @media (max-width: 700px) { .trust-logos { gap: 20px; font-size: 0.8rem; } }
 
     /* ============ 5. BENEFITS ============ */
     .benefit-card { text-align: center; }
@@ -761,22 +733,12 @@
 
   <div class="container hero-content">
     <div style="max-width: 720px;">
-      <span class="badge" style="background:rgba(255,255,255,0.15); color:#fff; backdrop-filter:blur(4px);">
-        <i class="fas fa-map-marker-alt"></i>&nbsp; Gandhi Nagar, Jammu
-      </span>
-
-      <h1 style="margin-top:18px;">Find Your Calm. Build Your Strength. Transform Your Life.</h1>
-
-      <p class="sub">
-        Health Hub is Jammu's friendly yoga &amp; wellness studio — expert-led classes
-        for every body and every level. In-studio and online. Your first session is on us.
-      </p>
+      <h1>Move Better. Feel Stronger. Live Calmer.</h1>
 
       <div class="hero-actions">
         <button class="btn-primary open-booking-modal" style="font-size:1.1rem; padding:16px 38px; border:none;">
           Claim Your Free Session <i class="fas fa-arrow-right"></i>
         </button>
-        <a href="#services" class="ghost-link">Browse all classes</a>
       </div>
 
       <div class="hero-proof">
@@ -786,22 +748,6 @@
     </div>
   </div>
 </section>
-
-<!-- ============================================================
-     4. TRUST BAR / FEATURED IN
-     ============================================================ -->
-<div class="trust-bar">
-  <div class="container trust-inner">
-    <span class="trust-label">As featured in</span>
-    <div class="trust-logos">
-      <span>YOGA MANTRA</span>
-      <span>INDIAN WELLNESS</span>
-      <span>LIVE YOGA</span>
-      <span>JAMMU TIMES</span>
-      <span>ELEPHANT JOURNAL</span>
-    </div>
-  </div>
-</div>
 
 <!-- ============================================================
      5. KEY BENEFITS / FEATURES GRID
@@ -873,11 +819,11 @@
       </div>
 
       <div class="card service-card">
-        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2020&auto=format&fit=crop"
-             class="placeholder" style="aspect-ratio:1/1;" alt="Yin and Restorative Yoga" loading="lazy">
-        <div style="margin-top:16px;"><span class="badge">Relax</span></div>
-        <h3>Yin &amp; Restorative</h3>
-        <p>Deep relaxation and stress release for busy minds.</p>
+        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=2070&auto=format&fit=crop"
+             class="placeholder" style="aspect-ratio:1/1;" alt="Children Yoga class" loading="lazy">
+        <div style="margin-top:16px;"><span class="badge">Kids</span></div>
+        <h3>Children Yoga</h3>
+        <p>Fun, playful sessions designed for young bodies and minds.</p>
         <a href="#contact" class="text-link" style="margin-top:12px; display:inline-block;">View Schedule →</a>
       </div>
 
@@ -933,16 +879,16 @@
     <div class="founder-grid">
       <div>
         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"
-             alt="Nikhil, founder of Health Hub" class="founder-photo" loading="lazy">
+             alt="Dr Neeraj Gupta, founder of Health Hub" class="founder-photo" loading="lazy">
       </div>
 
       <div>
         <span class="badge">Meet the Founder</span>
-        <h2 class="founder-name" style="margin-top:14px;">Nikhil</h2>
-        <div class="founder-role">Founder &amp; Lead Instructor · 5+ Years Experience</div>
+        <h2 class="founder-name" style="margin-top:14px;">Dr Neeraj Gupta</h2>
+        <div class="founder-role">Founder &amp; Wellness Director · 5+ Years Experience</div>
 
         <p class="founder-bio">
-          Nikhil founded Health Hub with one simple belief — that wellness should feel welcoming,
+          Dr Neeraj Gupta founded Health Hub with one simple belief — that wellness should feel welcoming,
           not intimidating. Over the past five years he has guided hundreds of students in Jammu
           through their first downward dog, their first deep stretch, and their first real
           moment of calm.
@@ -982,7 +928,7 @@
 
     <form class="offer-form" id="offerForm" onsubmit="return sendOfferToWhatsApp(event);">
       <input type="text" id="offerName" placeholder="Your name" required autocomplete="name">
-      <input type="tel" id="offerWhatsapp" placeholder="WhatsApp number (with country code)" required autocomplete="tel">
+      <input type="tel" id="offerWhatsapp" placeholder="WhatsApp number" required autocomplete="tel">
       <button type="submit" class="btn-offer">
         <i class="fab fa-whatsapp" style="font-size:1.3rem;"></i> Claim My Free Session
       </button>
@@ -1086,7 +1032,7 @@
         </div>
         <div class="faq-answer">
           Absolutely. Our beginner classes are designed specifically for people starting from zero.
-          Nikhil and the team will guide you through every posture — no flexibility or experience required.
+          Dr Neeraj and the team will guide you through every posture — no flexibility or experience required.
         </div>
       </div>
 
@@ -1227,7 +1173,7 @@
     <p>We'll ping you on WhatsApp to confirm your slot.</p>
 
     <input type="text" id="modalName" placeholder="Your name" required autocomplete="name">
-    <input type="tel" id="modalWhatsapp" placeholder="WhatsApp number (with country code)" required autocomplete="tel">
+    <input type="tel" id="modalWhatsapp" placeholder="WhatsApp number" required autocomplete="tel">
 
     <button class="btn-primary" id="sendWhatsAppBtn">
       <i class="fab fa-whatsapp" style="font-size:1.15rem;"></i> Send via WhatsApp
